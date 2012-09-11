@@ -1,0 +1,33 @@
+#!/bin/sd
+
+#
+# tool: mount_sd_and_ramdisk
+#
+# simple script to mount both the sdcard and ramdisk image
+# for the Avnet Zedboard
+#
+# Written by ZynqGeek
+#
+
+# start
+echo Creating Directories, mounting SD-Card, and Ram Disk Image
+
+# create our two mount point directorys
+cd /
+mkdir sdcard
+mkdir ramdisk
+
+# mount our sd card
+mount /dev/mccblkp1 /sdcard
+
+# make a copy of the compressed ramdisk image locally
+cp /sdcard/ramdisk8M.image.gz /tmp/
+
+# unzip the image, so we can mount it
+gunzup /temp/ramdisk8M.image.gz
+
+# mount the image to the directory we created
+mount -o loop /tmp/ramdisk8M.image /ramdisk
+
+# all done!
+echo DONE.
