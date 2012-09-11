@@ -1,4 +1,4 @@
-#!/bin/sd
+#!/bin/sh
 
 #
 # tool: mount_sd_and_ramdisk
@@ -18,16 +18,16 @@ mkdir sdcard
 mkdir ramdisk
 
 # mount our sd card
-mount /dev/mccblkp1 /sdcard
+mount /dev/mmcblk0 /sdcard
 
 # make a copy of the compressed ramdisk image locally
 cp /sdcard/ramdisk8M.image.gz /tmp/
 
 # unzip the image, so we can mount it
-gunzup /temp/ramdisk8M.image.gz
+gunzip /tmp/ramdisk8M.image.gz
 
 # mount the image to the directory we created
 mount -o loop /tmp/ramdisk8M.image /ramdisk
 
 # all done!
-echo DONE.
+mount

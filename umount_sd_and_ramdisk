@@ -1,9 +1,9 @@
-#!/bin/sd
+#!/bin/sh
 
 #
 # tool: umount_sd_and_ramdisk
 #
-# simple script to unmount, recompress, and move over the ramdisk image, 
+# simple script to unmount, recompress, and move over the ramdisk image,
 # to the sd-card as well as unmount the sd-card
 #
 # Written by ZynqGeek
@@ -28,7 +28,7 @@ echo ... Done
 
 # move the compressed image back to the sd-card
 echo Overwriting Existing Compressed Image on SD-Card ...
-mv /tmp/ramdisk8M.image.gz /sdcard/
+mv /tmp/ramdisk8M.image.gz /sdcard/ramdisk8M.image.gz.new
 echo ... Done
 
 # unmount the sd-card
