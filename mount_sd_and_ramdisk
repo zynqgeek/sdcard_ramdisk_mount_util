@@ -10,24 +10,33 @@
 #
 
 # start
-echo Creating Directories, mounting SD-Card, and Ram Disk Image
 
 # create our two mount point directorys
+echo Creating Directories ...
 cd /
 mkdir sdcard
 mkdir ramdisk
+echo Done
 
 # mount our sd card
+echo Mounting SD-Card ...
 mount /dev/mmcblk0 /sdcard
+echo ... Done
 
 # make a copy of the compressed ramdisk image locally
+echo Copying Ram Disk Image to /tmp ...
 cp /sdcard/ramdisk8M.image.gz /tmp/
+... Done
 
 # unzip the image, so we can mount it
+echo Unzipping the image ...
 gunzip /tmp/ramdisk8M.image.gz
+echo ... Done
 
 # mount the image to the directory we created
+echo Mounting the image to /ramdisk ...
 mount -o loop /tmp/ramdisk8M.image /ramdisk
+echo ... Done
 
 # all done!
 mount
